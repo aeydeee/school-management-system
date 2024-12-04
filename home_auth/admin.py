@@ -10,7 +10,6 @@ class CustomUserAdmin(DefaultUserAdmin):
     fieldsets = (
         (None, {'fields': ('username', 'password')}),  # Login details
         ('Personal info', {'fields': ('first_name', 'last_name', 'email')}),  # Personal details
-        ('Roles', {'fields': ('is_student', 'is_teacher', 'is_admin')}),  # Role fields
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'is_authorized',  # Add is_authorized here
                                     'groups', 'user_permissions')}),  # Admin permissions
     )
@@ -27,11 +26,11 @@ class CustomUserAdmin(DefaultUserAdmin):
     # Customize what fields are displayed in the list view
     list_display = (
         'username', 'email', 'first_name', 'last_name', 'is_authorized',
-        'is_student', 'is_teacher', 'is_admin', 'is_staff', 'is_superuser'
+        'is_staff', 'is_superuser'
     )
 
     # Filter users based on role and authorization
-    list_filter = ('is_student', 'is_teacher', 'is_admin', 'is_authorized', 'is_staff', 'is_superuser')
+    list_filter = ('is_authorized', 'is_staff', 'is_superuser')
 
     # Customize queryset to separate superusers and staff in the admin list view
     def get_queryset(self, request):
