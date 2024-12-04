@@ -1,8 +1,8 @@
 from django.conf import settings
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import send_mail
-from django.db import models
+from django.db import models, migrations
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.crypto import get_random_string
@@ -13,19 +13,15 @@ class CustomUser(AbstractUser):
     email = models.EmailField(max_length=100, unique=True)
     is_authorized = models.BooleanField(default=False)
 
-    is_admin = models.BooleanField(default=False)
-    is_student = models.BooleanField(default=False)
-    is_teacher = models.BooleanField(default=False)
-
     groups = models.ManyToManyField(
-        'auth.Group',
-        related_name=None,
+        Group,  # Use Django's Group model to manage roles
+        related_name='custom_users',  # You can reverse query users belonging to the group
         blank=True
     )
 
     user_permissions = models.ManyToManyField(
-        'auth.Permission',
-        related_name=None,
+        Permission,  # Permissions directly related to users
+        related_name='custom_users',  # Reverse lookup for permissions
         blank=True
     )
 
