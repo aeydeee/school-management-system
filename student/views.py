@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
+from school.models import Notification
 from student.forms import StudentForm, ParentForm
 from student.models import Parent, Student
 from utils.notification_utils import create_notification
@@ -54,10 +55,8 @@ def add_student(request):
 
 def student_list(request):
     stud_list = Student.objects.select_related('parent').all()
-    unread_notification = request.user.notification_set.filter(is_read=False)
     context = {
-        'student_list': stud_list,
-        'unread_notifacations': unread_notification
+        'student_list': stud_list
     }
     return render(request, 'students/students.html', context)
 
@@ -84,9 +83,9 @@ def edit_student(request, slug):
             # Save the student instance
             student.save()
 
-            create_notification(request.user, f'Added Student: {student.first_name} {student.last_name}')
+            create_notification(request.user, f'Edited Student: {student.first_name} {student.last_name}')
 
-            messages.success(request, 'Student added successfully!')
+            messages.success(request, 'Student edited successfully!')
             return HttpResponseRedirect(reverse('student_list'))
 
         else:
@@ -114,7 +113,7 @@ def delete_student(request, slug):
         student_name = f'{student.first_name} {student.last_name}'
         student.delete()
 
-        create_notification(request.user, f'Deleted Student: {student.first_name} {student.last_name}')
+        create_notification(request.user, f'Deleted Student: {student_name}')
 
         return redirect('student_list')
     return HttpResponseForbidden()
