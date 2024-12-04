@@ -12,6 +12,7 @@ def signup_view(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             user = form.save()
+            user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
             messages.success(request, 'Signup Successfully!')
             return redirect('index')
@@ -28,20 +29,21 @@ def login_view(request):
         if form.is_valid():
             email_or_username = form.cleaned_data['email']
             password = form.cleaned_data['password']
-
+            print(password)
             try:
                 user = authenticate(request, username=email_or_username, password=password)
 
                 if user is not None:
+                    user.backend = 'django.contrib.auth.backends.UsernameOrEmailBackend'
                     login(request, user)
                     messages.success(request, ' Login Successful')
 
-                    if user.is_admin:
-                        return redirect('admin_dashboard')
-                    elif user.is_student:
-                        return redirect('dashboard')
-                    elif user.is_teacher:
-                        return redirect('teacher_dashboard')
+                    if user.groups.filter(name='admin').exists():
+                        return redirect('index')
+                    elif user.groups.filter(name='student').exists():
+                        return redirect('student_dashboard')
+                    elif user.groups.filter(name='teacher').exists():
+                        return redirect('teacher:dashboard')
                     else:
                         messages.error(request, 'Invalid user role')
                         return redirect('index')
