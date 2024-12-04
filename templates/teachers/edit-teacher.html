@@ -2,174 +2,176 @@
 {% load static %}
 {% block body %}
 
-
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-
-            <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3 class="page-title">Edit Teachers</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="teachers.html">Teachers</a></li>
-                            <li class="breadcrumb-item active">Edit Teachers</li>
-                        </ul>
-                    </div>
-                </div>
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Edit Teachers</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'teacher:teacher_list' %}">Teachers</a></li>
+                    <li class="breadcrumb-item active">Edit Teachers</li>
+                </ul>
             </div>
+        </div>
+    </div>
 
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h5 class="form-title"><span>Basic Details</span></h5>
-                                    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="form-title"><span>Login Details</span></h5>
+                            </div>
+
+                            {{ signup_form.non_field_errors }}
+
+                            {% for field in signup_form %}
+                                {% if field.name != 'first_name' and field.name != 'last_name' %}
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Teacher ID <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" value="PRE1234">
+                                            <label for="{{ field.id_for_label }}">
+                                                {{ field.label }}
+                                                <span class="login-danger">*</span>
+                                            </label>
+                                            {{ field }}
+                                            {% if field.errors %}
+                                                <ul class="text-danger">
+                                                    {% for error in field.errors %}
+                                                        <li>{{ error }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Name <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" value="Vincent">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Gender <span class="login-danger">*</span></label>
-                                            <select class="form-control select">
-                                                <option>Male</option>
-                                                <option>Female</option>
-                                                <option>Others</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms calendar-icon">
-                                            <label>Date Of Birth <span class="login-danger">*</span></label>
-                                            <input class="form-control datetimepicker" type="text"
-                                                   placeholder="29-04-2022">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Mobile <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" value="077 3499 9959">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms calendar-icon">
-                                            <label>Joining Date <span class="login-danger">*</span></label>
-                                            <input class="form-control datetimepicker" type="text"
-                                                   placeholder="29-04-2022">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Qualification <span class="login-danger">*</span></label>
-                                            <input class="form-control" type="text" value="Bachelor of Engineering">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Experience <span class="login-danger">*</span></label>
-                                            <input class="form-control" type="text" value="5">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <h5 class="form-title"><span>Login Details</span></h5>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Username <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" value="Vincent">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Email ID <span class="login-danger">*</span></label>
-                                            <input type="email" class="form-control" value="vincent20@gmail.com">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Password <span class="login-danger">*</span></label>
-                                            <input type="password" class="form-control" value="vincent">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Repeat Password <span class="login-danger">*</span></label>
-                                            <input type="password" class="form-control" value="vincent">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <h5 class="form-title"><span>Address</span></h5>
-                                    </div>
-                                    <div class="col-12 ">
-                                        <div class="form-group local-forms">
-                                            <label>Address <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" value="3979 Ashwood Drive">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>City <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" value="Omaha">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>State <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" value="Omaha">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Zip Code <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" value="3979">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Country <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" value="USA">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="student-submit">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% for field in reset_password_form %}
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group local-forms">
+                                        <label for="{{ field.id_for_label }}">
+                                            {{ field.label }}
+                                            <span class="login-danger">*</span>
+                                        </label>
+                                        {{ field }}
+                                        {% if field.errors %}
+                                            <ul class="text-danger">
+                                                {% for error in field.errors %}
+                                                    <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
                                     </div>
                                 </div>
-                            </form>
+                            {% endfor %}
+
+                            <div class="col-12">
+                                <h5 class="form-title"><span>Basic Details</span></h5>
+                            </div>
+
+                            {{ form.non_field_errors }}
+
+                            {% for field in signup_form %}
+                                {% if field.name == 'first_name' or field.name == 'last_name' %}
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                            <label for="{{ field.id_for_label }}">
+                                                {{ field.label }}
+                                                <span class="login-danger">*</span>
+                                            </label>
+                                            {{ field }}
+                                            {% if field.errors %}
+                                                <ul class="text-danger">
+                                                    {% for error in field.errors %}
+                                                        <li>{{ error }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
+
+
+                            {% for field in teacher_form %}
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group local-forms">
+                                        <label for="{{ field.id_for_label }}">
+                                            {{ field.label }}
+                                            <span class="login-danger">*</span>
+                                        </label>
+                                        {{ field }}
+
+                                        {% if field.errors %}
+                                            <ul class="text-danger">
+                                                {% for error in field.errors %}
+                                                    <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                            <div class="col-12">
+                                <h5 class="form-title"><span>Address</span></h5>
+                            </div>
+
+                            {{ address_form.non_field_errors }}
+
+                            {% for field in address_form %}
+
+                                {% if field.name == 'address' %}
+                                    <div class="col-12">
+                                        <div class="form-group local-forms">
+                                            <label for="{{ field.id_for_label }}">
+                                                {{ field.label }}
+                                                <span class="login-danger">*</span>
+                                            </label>
+                                            {{ field }}
+                                            {% if field.errors %}
+                                                <ul class="text-danger">
+                                                    {% for error in field.errors %}
+                                                        <li>{{ error }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                            <label for="{{ field.id_for_label }}">
+                                                {{ field.label }}
+                                                <span class="login-danger">*</span>
+                                            </label>
+                                            {{ field }}
+                                            {% if field.errors %}
+                                                <ul class="text-danger">
+                                                    {% for error in field.errors %}
+                                                        <li>{{ error }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                            {% endfor %}
+
+                            <div class="col-12">
+                                <div class="student-submit">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-
-
-
-    <script src="assets/js/jquery-3.6.0.min.js"></script>
-
-    <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <script src="assets/js/feather.min.js"></script>
-
-    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
-    <script src="assets/plugins/moment/moment.min.js"></script>
-    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
-
-    <script src="assets/plugins/select2/js/select2.min.js"></script>
-
-    <script src="assets/js/script.js"></script>
 {% endblock body %}
