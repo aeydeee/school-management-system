@@ -2,102 +2,81 @@
 {% load static %}
 {% block body %}
 
-    <div class="page-wrapper">
-        <div class="content container-fluid">
 
-            {% for message in messages %}
-                {% if message.tags == 'success' %}
-                    <div class="alert alert-success alert-dismissible fade show" role="alert"></div>
-                {% elif message.tags == 'error' %}
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert"></div>
-                {% else %}
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert"></div>
-                {% endif %}
-                {{ message }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            {% endfor %}
 
-            <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3 class="page-title">Edit Students</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/students">Students</a></li>
-                            <li class="breadcrumb-item active">Edit Students</li>
-                        </ul>
-                    </div>
-                </div>
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Edit Students</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'student_list' %}">Students</a></li>
+                    <li class="breadcrumb-item active">Edit Students</li>
+                </ul>
             </div>
+        </div>
+    </div>
 
-            <small>Current Image: {{ student.student_image.url }}</small>
+    <small>Current Image: {{ student.student_image.url }}</small>
 
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <form method="POST" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h5 class="form-title"><span>Student Information</span></h5>
-                                    </div>
-                                    {{ student_form.non_field_errors }}
-                                    {{ parent_form.non_field_errors }}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="form-title"><span>Student Information</span></h5>
+                            </div>
+                            {{ student_form.non_field_errors }}
+                            {{ parent_form.non_field_errors }}
 
-                                    {% for field in student_form %}
-                                        {% if field.name == "student_image" %}
-                                            <div class="col-12 col-sm-6">
-                                                <div class="form-group">
-                                                    {{ field.label_tag }}
-                                                    {{ field }}
-                                                    {{ field.errors }}
-                                                </div>
-                                            </div>
-                                            <small>Current Image: {{ field.student_image.url }}</small>
-                                        {% else %}
-                                            <div class="col-12 col-sm-6">
-                                                <div class="form-group">
-                                                    {{ field.label_tag }}
-                                                    {{ field }}
-                                                    {{ field.errors }}
-                                                </div>
-                                            </div>
-                                        {% endif %}
-                                    {% endfor %}
-
-
-                                    <div class="col-12">
-                                        <h5 class="form-title"><span>Parent Information</span></h5>
-                                    </div>
-
-
-                                    {% for field in parent_form %}
-                                        <div class="col-12 col-sm-6">
-                                            <div class="form-group">
-                                                {{ field.label_tag }}
-                                                {{ field }}
-                                                {{ field.errors }}
-                                            </div>
+                            {% for field in student_form %}
+                                {% if field.name == "student_image" %}
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            {{ field.label_tag }}
+                                            {{ field }}
+                                            {{ field.errors }}
                                         </div>
-                                    {% endfor %}
+                                    </div>
+                                    <small>Current Image: {{ field.student_image.url }}</small>
+                                {% else %}
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            {{ field.label_tag }}
+                                            {{ field }}
+                                            {{ field.errors }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
 
 
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="col-12">
+                                <h5 class="form-title"><span>Parent Information</span></h5>
+                            </div>
+
+
+                            {% for field in parent_form %}
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        {{ field.label_tag }}
+                                        {{ field }}
+                                        {{ field.errors }}
                                     </div>
                                 </div>
-                            </form>
+                            {% endfor %}
+
+
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
-    <script src="{% static 'assets/js/popper.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
-    <script src="{% static 'assets/js/script.js' %}"></script>
+
 {% endblock %}
