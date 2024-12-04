@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'student',
     'teacher',
     'utils',
+    'school.templatetags'
 ]
 
 MIDDLEWARE = [
@@ -67,7 +68,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'context_processors.add_active_page',
-                'context_processors.notification_context_processor',
+                'context_processors.notification',
+                'context_processors.current_user_group',
             ],
         },
     },
