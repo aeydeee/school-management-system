@@ -21,11 +21,10 @@ class SignupForm(UserCreationForm):
     }))
     password1 = forms.CharField(required=True, widget=forms.PasswordInput(attrs={
         'class': 'form-control'
-    }))
+    }), label='Password')
     password2 = forms.CharField(required=True, widget=forms.PasswordInput(attrs={
         'class': 'form-control'
-    }))
-    role = forms.ChoiceField(choices=[('student', 'Student'), ('teacher', 'Teacher'), ('others', 'Others')])
+    }), label="Confirm Password")
 
     class Meta:
         model = CustomUser
@@ -35,6 +34,49 @@ class SignupForm(UserCreationForm):
                 'class': 'form-control'
             })
         }
+
+
+class EditUserForm(forms.ModelForm):
+    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={
+        'class': 'form-control'
+    }))
+    first_name = forms.CharField(required=True, widget=forms.TextInput(attrs={
+        'class': 'form-control'
+    }))
+    last_name = forms.CharField(required=True, widget=forms.TextInput(attrs={
+        'class': 'form-control'
+    }))
+
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'email', 'first_name', 'last_name']
+        widgets = {
+            'username': forms.TextInput(attrs={
+                'class': 'form-control'
+            })
+        }
+
+
+class PasswordChangeForm(forms.ModelForm):
+    new_password = forms.CharField(required=False, widget=forms.PasswordInput(attrs={
+        'class': 'form-control'
+    }), label='Password')
+    confirm_password = forms.CharField(required=False, widget=forms.PasswordInput(attrs={
+        'class': 'form-control'
+    }), label="Confirm Password")
+
+    class Meta:
+        model = CustomUser
+        fields = ['new_password', 'confirm_password']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        new_password = cleaned_data.get('new_password')
+        confirm_password = cleaned_data.get('confirm_password')
+
+        if new_password != confirm_password:
+            raise forms.ValidationError("Passwords do not match.")
+        return cleaned_data
 
 
 class LoginForm(forms.Form):
