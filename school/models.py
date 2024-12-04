@@ -6,7 +6,7 @@ from django.db import models
 
 # Create your models here.
 class Notification(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4(), editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     message = models.TextField(max_length=255)
     is_read = models.BooleanField(default=False)
