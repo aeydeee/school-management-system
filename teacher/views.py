@@ -8,7 +8,6 @@ from django.views import View
 from django.views.generic import ListView, DetailView
 
 from home_auth.forms import SignupForm, PasswordChangeForm, EditUserForm
-from home_auth.models import CustomUser
 from teacher.models import Teacher
 
 from teacher.forms import TeacherForm, AddressForm
