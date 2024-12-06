@@ -1,0 +1,18 @@
+.select2-container .select2-selection--single {
+    /*height: calc(2rem + 2px); !* Matches Bootstrap's form-control height *!*/
+    padding: .5rem 0.75rem 2.1rem 0; /* Matches Bootstrap's padding */
+
+    font-size: 1rem; /* Matches font-size */
+    line-height: 1; /* Matches line-height */
+    border: 1px solid #ddd; /* Matches border style */
+    border-radius: 0.2rem; /* Matches border-radius */
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #495057; /* Matches Bootstrap's text color */
+    padding-left: 0; /* Removes extra padding */
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: calc(2.25rem + 2px); /* Matches Bootstrap's height */
+}
