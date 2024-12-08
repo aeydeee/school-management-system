@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
 
+from subject.models import Section
+
 
 # Create your models here.
 class Parent(models.Model):
@@ -32,11 +34,11 @@ class Student(models.Model):
     joining_date = models.DateField()
     mobile_number = models.CharField(max_length=15)
     admission_number = models.CharField(max_length=15)
-    section = models.CharField(max_length=15)
     student_image = models.ImageField(upload_to='students/', default='students/profile.png')
     slug = models.CharField(max_length=255, unique=True, blank=True)
 
     parent = models.OneToOneField(Parent, on_delete=models.CASCADE)
+    section = models.ForeignKey(Section, on_delete=models.SET_NULL, null=True, related_name='students')
 
     def save(self, *args, **kwargs):
         if not self.slug:

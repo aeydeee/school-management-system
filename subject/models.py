@@ -18,3 +18,8 @@ class Class(models.Model):
 
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='classes')
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='classes')
+
+
+class Section(models.Model):
+    name = models.CharField(max_length=15)
+    class_instance = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='sections')
