@@ -5,11 +5,11 @@
 <div class="header">
 
     <div class="header-left">
-        <a href="index.html" class="logo">
-            <img src="assets/img/logo.png" alt="Logo">
+        <a href="{% url 'index' %}" class="logo">
+            <img src="{% static 'assets/img/logo.png' %}" alt="Logo">
         </a>
-        <a href="index.html" class="logo logo-small">
-            <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
+        <a href="{% url 'index' %}" class="logo logo-small">
+            <img src="{% static 'assets/img/logo-small.png' %}" alt="Logo" width="30" height="30">
         </a>
     </div>
     <div class="menu-toggle">
@@ -213,7 +213,8 @@
                     <a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="subjects.html">Subject List</a></li>
+                        <li><a class="{% if active_page == 'subject_list' %}active{% endif %}"
+                               href="{% url 'subject:subject_list' %}">Subject List</a></li>
                         <li><a href="add-subject.html">Subject Add</a></li>
                         <li><a href="edit-subject.html">Subject Edit</a></li>
                     </ul>
