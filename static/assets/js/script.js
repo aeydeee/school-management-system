@@ -27,7 +27,7 @@
     }
 
     init();
-    $('body').append('<div class="sidebar-overlay"></div>');
+    $('body').append('<div class_group="sidebar-overlay"></div>');
     $(document).on('click', '#mobile_btn', function () {
         $wrapper.toggleClass('slide-nav');
         $('.sidebar-overlay').toggleClass('opened');
@@ -94,11 +94,11 @@
         return false;
     });
     $(document).on("click", ".add-links", function () {
-        let experiencecontent = '<div class="row form-row links-cont">' +
-            '<div class="form-group d-flex">' +
-            '<button class="btn social-icon"><i class="feather-github"></i></button>' +
-            '<input type="text" class="form-control" placeholder="Social Link">' +
-            '<div><a href="#" class="btn trash"><i class="feather-trash-2"></i></a></div>' +
+        let experiencecontent = '<div class_group="row form-row links-cont">' +
+            '<div class_group="form-group d-flex">' +
+            '<button class_group="btn social-icon"><i class_group="feather-github"></i></button>' +
+            '<input type="text" class_group="form-control" placeholder="Social Link">' +
+            '<div><a href="#" class_group="btn trash"><i class_group="feather-trash-2"></i></a></div>' +
             '</div>' +
             '</div>';
         $(".settings-form").append(experiencecontent);
@@ -301,9 +301,9 @@
         return false;
     });
     $(document).on("click", ".add-links", function () {
-        let experiencecontent = '<div class="links-cont">' +
-            '<div class="service-amount">' +
-            '<a href="#" class="service-trash"><i class="fe fe-minus-circle me-1"></i>Service Charge</a> <span>$ 4</span' +
+        let experiencecontent = '<div class_group="links-cont">' +
+            '<div class_group="service-amount">' +
+            '<a href="#" class_group="service-trash"><i class_group="fe fe-minus-circle me-1"></i>Service Charge</a> <span>$ 4</span' +
             '</div>' +
             '</div>';
         $(".links-info-one").append(experiencecontent);
@@ -314,9 +314,9 @@
         return false;
     });
     $(document).on("click", ".add-links-one", function () {
-        let experiencecontent = '<div class="links-cont-discount">' +
-            '<div class="service-amount">' +
-            '<a href="#" class="service-trash-one"><i class="fe fe-minus-circle me-1"></i>Offer new</a> <span>$ 4 %</span' +
+        let experiencecontent = '<div class_group="links-cont-discount">' +
+            '<div class_group="service-amount">' +
+            '<a href="#" class_group="service-trash-one"><i class_group="fe fe-minus-circle me-1"></i>Offer new</a> <span>$ 4 %</span' +
             '</div>' +
             '</div>';
         $(".links-info-discount").append(experiencecontent);
@@ -377,29 +377,29 @@
         return false;
     });
     $(document).on("click", ".add-btn", function () {
-        let experiencecontent = '<tr class="add-row">' +
+        let experiencecontent = '<tr class_group="add-row">' +
             '<td>' +
-            '<input type="text" class="form-control">' +
+            '<input type="text" class_group="form-control">' +
             '</td>' +
             '<td>' +
-            '<input type="text" class="form-control">' +
+            '<input type="text" class_group="form-control">' +
             '</td>' +
             '<td>' +
-            '<input type="text" class="form-control">' +
+            '<input type="text" class_group="form-control">' +
             '</td>' +
             '<td>' +
-            '<input type="text" class="form-control">' +
+            '<input type="text" class_group="form-control">' +
             '</td>' +
             '<td>' +
-            '<input type="text" class="form-control">' +
+            '<input type="text" class_group="form-control">' +
             '</td>' +
             '<td>' +
-            '<input type="text" class="form-control">' +
+            '<input type="text" class_group="form-control">' +
             '</td>' +
-            '<td class="add-remove text-end">' +
-            '<a href="javascript:void(0);" class="add-btn me-2"><i class="fas fa-plus-circle"></i></a> ' +
-            '<a href="#" class="copy-btn me-2"><i class="fe fe-copy"></i></a>' +
-            '<a href="javascript:void(0);" class="remove-btn"><i class="fe fe-trash-2"></i></a>' +
+            '<td class_group="add-remove text-end">' +
+            '<a href="javascript:void(0);" class_group="add-btn me-2"><i class_group="fas fa-plus-circle"></i></a> ' +
+            '<a href="#" class_group="copy-btn me-2"><i class_group="fe fe-copy"></i></a>' +
+            '<a href="javascript:void(0);" class_group="remove-btn"><i class_group="fe fe-trash-2"></i></a>' +
             '</td>' +
             '</tr>';
         $(".add-table-items").append(experiencecontent);
