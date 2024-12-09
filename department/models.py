@@ -10,3 +10,6 @@ class Department(models.Model):
     head_of_department = models.OneToOneField(Teacher, on_delete=models.CASCADE, null=True, blank=True,
                                               related_name='departments')
     start_date = models.DateField()
+
+    def __str__(self) -> str:
+        return f"{self.department_id} - {self.name}"
