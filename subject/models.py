@@ -6,8 +6,8 @@ from teacher.models import Teacher
 
 # Create your models here.
 class Subject(models.Model):
-    code = models.CharField(max_length=45)
-    name = models.CharField(max_length=100)
+    code = models.CharField(max_length=45, unique=True)
+    name = models.CharField(max_length=100, unique=True)
 
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='subjects')
 
