@@ -215,8 +215,10 @@
                     <ul>
                         <li><a class="{% if active_page == 'subject_list' %}active{% endif %}"
                                href="{% url 'subject:subject_list' %}">Subject List</a></li>
-                        <li><a href="add-subject.html">Subject Add</a></li>
-                        <li><a href="edit-subject.html">Subject Edit</a></li>
+                        <li><a class="{% if active_page == 'add_subject' %}active{% endif %}"
+                               href="{% url 'subject:add_subject' %}">Subject Add</a></li>
+                        <li><a class="{% if active_page == 'edit_subject' %}active {% else %} d-none {% endif %}"
+                               href="#">Subject Edit</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
