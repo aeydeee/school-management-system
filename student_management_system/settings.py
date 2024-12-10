@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'school.templatetags',
     'department',
     "django_select2",
-    'subject'
+    'subject',
+    'class_group'
 ]
 
 MIDDLEWARE = [
