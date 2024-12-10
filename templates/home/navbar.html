@@ -75,8 +75,8 @@
                                         <div class="media-body flex-grow-1">
                                             <p class="noti-details"><span
                                                     class="noti-title">{{ notification.user.username }}</span>
-                                                {{ notification.message }} <span
-                                                        class="noti-title">your estimate</span>
+                                                {{ notification.message }}
+                                                {#                                                <span class="noti-title">your estimate</span>#}
                                             </p>
                                             <p class="noti-time"><span
                                                     class="notification-time">{{ notification.created_at|timesince }} ago</span>
@@ -218,6 +218,18 @@
                         <li><a class="{% if active_page == 'add_subject' %}active{% endif %}"
                                href="{% url 'subject:add_subject' %}">Subject Add</a></li>
                         <li><a class="{% if active_page == 'edit_subject' %}active {% else %} d-none {% endif %}"
+                               href="#">Subject Edit</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#"><i class="fas fa-door-closed"></i> <span> Classes </span> <span
+                            class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a class="{% if active_page == 'class_list' %}active{% endif %}"
+                               href="{% url 'class:class_list' %}">Subject List</a></li>
+                        <li><a class="{% if active_page == 'add_class' %}active{% endif %}"
+                               href="{% url 'class:add_class' %}">Subject Add</a></li>
+                        <li><a class="{% if active_page == 'edit_class' %}active {% else %} d-none {% endif %}"
                                href="#">Subject Edit</a></li>
                     </ul>
                 </li>
