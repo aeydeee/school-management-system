@@ -397,7 +397,7 @@
 
         this.container.addClass('opens' + this.opens);
 
-        //apply CSS classes and labels to buttons
+        //apply CSS class_groups and labels to buttons
         this.container.find('.applyBtn, .cancelBtn').addClass(this.buttonClasses);
         if (this.applyButtonClasses.length)
             this.container.find('.applyBtn').addClass(this.applyButtonClasses);
@@ -819,7 +819,7 @@
                     if (this.endDate != null && calendar[row][col] > this.startDate && calendar[row][col] < this.endDate)
                         classes.push('in-range');
 
-                    //apply custom classes for this date
+                    //apply custom class_groups for this date
                     var isCustom = this.isCustomDate(calendar[row][col]);
                     if (isCustom !== false) {
                         if (typeof isCustom === 'string')

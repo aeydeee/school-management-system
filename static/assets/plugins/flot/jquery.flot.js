@@ -58,7 +58,7 @@ Licensed under the MIT license.
 	// The Canvas object is a wrapper around an HTML5 <canvas> tag.
 	//
 	// @constructor
-	// @param {string} cls List of classes to apply to the canvas.
+	// @param {string} cls List of class_groups to apply to the canvas.
 	// @param {element} container Element onto which to append the canvas.
 	//
 	// Requiring a container is a little iffy, but unfortunately canvas
@@ -232,7 +232,7 @@ Licensed under the MIT license.
 
 	// Creates (if necessary) and returns the text overlay container.
 	//
-	// @param {string} classes String of space-separated CSS classes used to
+	// @param {string} class_groups String of space-separated CSS class_groups used to
 	//     uniquely identify the text layer.
 	// @return {object} The jQuery-wrapped text-layer div.
 
@@ -305,11 +305,11 @@ Licensed under the MIT license.
 	// Canvas maintains a cache of recently-used text info objects; getTextInfo
 	// either returns the cached element or creates a new entry.
 	//
-	// @param {string} layer A string of space-separated CSS classes uniquely
+	// @param {string} layer A string of space-separated CSS class_groups uniquely
 	//     identifying the layer containing this text.
 	// @param {string} text Text string to retrieve info for.
 	// @param {(string|object)=} font Either a string of space-separated CSS
-	//     classes or a font-spec object, defining the text's font and style.
+	//     class_groups or a font-spec object, defining the text's font and style.
 	// @param {number=} angle Angle at which to rotate the text, in degrees.
 	//     Angle is currently unused, it will be implemented in the future.
 	// @param {number=} width Maximum width of the text before it wraps.
@@ -386,13 +386,13 @@ Licensed under the MIT license.
 	// The text isn't drawn immediately; it is marked as rendering, which will
 	// result in its addition to the canvas on the next render pass.
 	//
-	// @param {string} layer A string of space-separated CSS classes uniquely
+	// @param {string} layer A string of space-separated CSS class_groups uniquely
 	//     identifying the layer containing this text.
 	// @param {number} x X coordinate at which to draw the text.
 	// @param {number} y Y coordinate at which to draw the text.
 	// @param {string} text Text string to draw.
 	// @param {(string|object)=} font Either a string of space-separated CSS
-	//     classes or a font-spec object, defining the text's font and style.
+	//     class_groups or a font-spec object, defining the text's font and style.
 	// @param {number=} angle Angle at which to rotate the text, in degrees.
 	//     Angle is currently unused, it will be implemented in the future.
 	// @param {number=} width Maximum width of the text before it wraps.
@@ -464,13 +464,13 @@ Licensed under the MIT license.
 	// where we potentially get rid of all text on a layer, but will likely
 	// add back most or all of it later, as when redrawing axes, for example.
 	//
-	// @param {string} layer A string of space-separated CSS classes uniquely
+	// @param {string} layer A string of space-separated CSS class_groups uniquely
 	//     identifying the layer containing this text.
 	// @param {number=} x X coordinate of the text.
 	// @param {number=} y Y coordinate of the text.
 	// @param {string=} text Text string to remove.
 	// @param {(string|object)=} font Either a string of space-separated CSS
-	//     classes or a font-spec object, defining the text's font and style.
+	//     class_groups or a font-spec object, defining the text's font and style.
 	// @param {number=} angle Angle at which the text is rotated, in degrees.
 	//     Angle is currently unused, it will be implemented in the future.
 
@@ -719,7 +719,7 @@ Licensed under the MIT license.
 
         function initPlugins() {
 
-            // References to key classes, allowing plugins to modify them
+            // References to key class_groups, allowing plugins to modify them
 
             var classes = {
                 Canvas: Canvas
