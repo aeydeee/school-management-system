@@ -27,3 +27,22 @@ class ClassForm(forms.ModelForm):
         widgets = {
 
         }
+
+
+class SectionForm(forms.ModelForm):
+    name = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        required=True
+    )
+
+    grade_level = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        required=True
+    )
+
+    class Meta:
+        model = Section
+        fields = '__all__'
+        widgets = {
+
+        }
