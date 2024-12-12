@@ -6,10 +6,11 @@
 
     <div class="header-left">
         <a href="{% url 'index' %}" class="logo">
-            <img src="{% static 'assets/img/logo.png' %}" alt="Logo">
+            <img src="{% static 'assets/img/logo1.png' %}" alt="Logo">
         </a>
         <a href="{% url 'index' %}" class="logo logo-small">
-            <img src="{% static 'assets/img/logo-small.png' %}" alt="Logo" width="30" height="30">
+            <img src="{% static 'assets/img/logo-small.png' %}" alt="Logo" width="30" height="30"
+                 class="rounded-circle">
         </a>
     </div>
     <div class="menu-toggle">
@@ -225,12 +226,18 @@
                     <a href="#"><i class="fas fa-door-closed"></i> <span> Classes </span> <span
                             class="menu-arrow"></span></a>
                     <ul>
+
+                        <li><a class="{% if active_page == 'section_list' %}active{% endif %}"
+                               href="{% url 'class:section_list' %}">Manage Sections</a></li>
+                        <li><a class="{% if active_page == 'edit_section' %}active {% else %} d-none {% endif %}"
+                               href="#">Section Edit</a></li>
+
                         <li><a class="{% if active_page == 'class_list' %}active{% endif %}"
-                               href="{% url 'class:class_list' %}">Subject List</a></li>
+                               href="{% url 'class:class_list' %}">Class List</a></li>
                         <li><a class="{% if active_page == 'add_class' %}active{% endif %}"
-                               href="{% url 'class:add_class' %}">Subject Add</a></li>
+                               href="{% url 'class:add_class' %}">Class Add</a></li>
                         <li><a class="{% if active_page == 'edit_class' %}active {% else %} d-none {% endif %}"
-                               href="#">Subject Edit</a></li>
+                               href="#">Class Edit</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
