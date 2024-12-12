@@ -6,10 +6,10 @@
     <div class="page-header">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="page-title">Edit Subject</h3>
+                <h3 class="page-title">Edit Class</h3>
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{% url 'subject:subject_list' %}">Subject</a></li>
-                    <li class="breadcrumb-item active">Edit Subject</li>
+                    <li class="breadcrumb-item"><a href="{% url 'class:class_list' %}">Class</a></li>
+                    <li class="breadcrumb-item active">Edit Class</li>
                 </ul>
             </div>
         </div>
@@ -25,7 +25,7 @@
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-12">
-                                <h5 class="form-title"><span>Subject Information</span></h5>
+                                <h5 class="form-title"><span>Class Information</span></h5>
                             </div>
 
                             {{ form.non_field_errors }}
