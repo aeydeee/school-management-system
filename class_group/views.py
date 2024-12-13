@@ -48,5 +48,5 @@ class SectionManageView(View):
 class SectionUpdateView(UpdateView):
     model = Section
     form_class = SectionForm
-    template_name = 'class_groups/section/sections.html'
+    template_name = 'class_groups/section/edit-section.html'
     success_url = reverse_lazy('class:section_list')
