@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, HttpResponseForbidden
+from django.http import JsonResponse, HttpResponseForbidden
 from django.shortcuts import render
 
 from school.models import Notification
@@ -6,7 +6,7 @@ from school.models import Notification
 
 # Create your views here.
 def index(request):
-    return render(request, 'home/index.html')
+    return render(request, 'home/admin-dashboard.html')
 
 
 def dashboard(request):
